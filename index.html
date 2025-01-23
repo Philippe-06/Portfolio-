@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Géovanni TOYHIN - Portfolio</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #1a237e;
+            color: white;
+            padding: 1rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #90caf9;
+        }
+
+        /* Hero section */
+        #hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(rgba(26, 35, 126, 0.9), rgba(26, 35, 126, 0.7)), url('/api/placeholder/1200/800');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            color: #e3f2fd;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #2196f3;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .cta-button:hover {
+            background-color: #1976d2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        /* Section styles */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            text-align: center;
+            margin-bottom: 3rem;
+            color: #1a237e;
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: #2196f3;
+            margin: 1rem auto;
+        }
+
+        /* About section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            background: url('/api/placeholder/600/400');
+            background-size: cover;
+            background-position: center;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #444;
+        }
+
+        /* Projects section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            color: #1a237e;
+            margin-bottom: 1rem;
+        }
+
+        .project-content p {
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        .project-tag {
+            background-color: #e3f2fd;
+            color: #1976d2;
+            padding: 0.25rem 0.75rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+
+        /* Skills section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .skill-item {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-item i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2196f3;
+        }
+
+        .skill-item h3 {
+            color: #1a237e;
+        }
+
+        /* Contact section */
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #1a237e;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e3f2fd;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #2196f3;
+            outline: none;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1a237e;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #90caf9;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: #1a237e;
+                flex-direction: column;
+                padding: 1rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Géovanni TOYHIN</div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+            <div class="nav-links" id="navLinks">
+                <a href="#hero">Acceuil</a>
+                <a href="#about">A Propos</a>
+                <a href="#projects">Projets</a>
+                <a href="#skills">Compétences</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1>Géovanni TOYHIN</h1>
+            <p>Développeur et Programmeur full-stack et passionné d’UI/UX et IA</p>
+            <a href="#projects" class="cta-button">Voir Mon Travail</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>A Propos De Moi </h2>
+        <div class="about-content">
+            <div class="about-image"></div>
+            <div class="about-text">
+                <p>Bonjour! Je suis Géovanni, 19 ans un développeur et programmeur full-stack passionné avec 2 ans d’expérience dans l'étude et la création d’applications et de site web modernes. Je me spécialise dans la création de sites Web et d’applications réactifs et conviviaux qui interviennent dans la vie de l'Homme.</p>
+                <p>Avec une base et un niveau plutot intermédiare dans le développement front-end et back-end, j’aime donner vie à des idées grâce à un code épuré et à un design intuitif. J’apprends constamment de nouvelles technologies et techniques pour rester à l’avant-garde du développement web.</p>
+                <p>Lorsque je ne suis pas en train de coder, vous pouvez me trouver en train de contribuer à des projets open source, de mentorer des développeurs juniors ou d’explorer les dernières technologies Web ainsi que passé du temps avec mon entourrage et regarder des animés entant qu'un otaku.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2>Mes Projets</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-content">
+                    <h3>Site E-Commerce </h3>
+                    <p>Une boutique en ligne complète construite avec Html5; CSS5 et JavaScript, avec authentification de l’utilisateur</p>
+                    <p>Accéder à ca site intitulé <a href="https://philippe-06.github.io/TOVEKOR-DESIGN-Web/"> TOVEKOR DESIGN </a></p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML5</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">CSS3</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-content">
+                    <h3>Application Calculatrice de gestion des tâches Opératoire</h3>
+                    <p>Un outil de calcul basique et très pratique pour les gestionnaires de commerce et les comptables et toute personne .</p>
+                    <p>Accéder à ca site intitulé <a href="calc.html"> Calculatrice Web </a></p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML5</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Tailwind CSS</span>
+                    </div>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-image" style="background-image: url('/api/placeholder/400/200')"></div>
+                <div class="project-content">
+                    <h3>Un jeu vidéo en 2d</h3>
+                    <p>Un jeu en 2d qui consiste à faire un raid en solo dans une ville sur une voie goudronnée tout en évitant les obstacle.</p>
+                    <p>Accéder à ca site intitulé <a href="https://github.com/Philippe-06/Geo-game?tab=readme-ov-file"> Dash </a></p>
+                    <div class="project-tags">
+                        <span class="project-tag">Python</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2>Mes Comptences</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i class="fab fa-html5"></i>
+                <h3>HTML5</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS3</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-react"></i>
+                <h3>Firebase</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-node"></i>
+                <h3>Python</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-react"></i>
+                <h3>Flutterflow</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-node"></i>
+                <h3>Php</h3>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Me Contacter</h2>
+        <form class="contact-form">
+            <div class="form-group">
+                <label for="name">Nom et Prénom</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" required></textarea>
+            </div>
+            <button type="submit" class="cta-button">Envoyer Message</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Géovanni TOYHIN. Tout Droits Réservés.</p>
+        <div class="social-links">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab</antArtifact>
